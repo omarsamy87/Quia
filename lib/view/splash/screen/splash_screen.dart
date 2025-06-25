@@ -1,5 +1,10 @@
+import 'package:auizapplaren/app/controller/splash/splash_controlr_screens.dart';
 import 'package:auizapplaren/core/resources/String.dart';
 import 'package:auizapplaren/core/resources/color_maneger.dart';
+import 'package:auizapplaren/core/resources/font_maneger.dart';
+import 'package:auizapplaren/core/resources/height.dart';
+import 'package:auizapplaren/view/on_bording/screen/on_pording_screen.dart';
+import 'package:auizapplaren/view/splash/widgit/custom_buttom_sblash_screns.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -23,22 +28,10 @@ class SplashScreen extends StatelessWidget {
             ), 
                
             ),
-            MaterialButton(onPressed: (){},
-            child: Container(
-              decoration: BoxDecoration(
-                color: ColorManege.kwhite,
-              
-              borderRadius: BorderRadius.circular(70)),
-              alignment: Alignment.center,
-              width: double.infinity,
-              height: 70,
-              
-              child:  Text(TextValiu.kTextBtoom,
-              style: TextStyle(color: ColorManege.kblack,
-              
-              fontSize: 21,
-              ),),
-            ),)
+        CustomButtomSblashScrens(onPressed: () {
+          SplashScreens.gotoonBordingPaeg(context);
+          
+        },)
           ],
         ),
       ),

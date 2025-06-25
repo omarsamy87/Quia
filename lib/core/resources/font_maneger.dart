@@ -1,3 +1,5 @@
 class fontSize {
-  static const double k400=400;
+  static const double f21=21;
+
+  static const double f400=400;
 }

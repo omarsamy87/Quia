@@ -1,3 +1,4 @@
+import 'package:auizapplaren/core/resources/ruotes_maneger.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,8 +10,9 @@ class QuisApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+     routes:RuotesManeger.routes ,
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+     initialRoute: RuotesName.kSplashScreens,
     );
   }
 }
