@@ -2,7 +2,7 @@ import 'package:auizapplaren/core/resources/ruotes_maneger.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../view/splash/screen/splash_screen.dart';
+
 
 class QuisApp extends StatelessWidget {
   const QuisApp({super.key});
