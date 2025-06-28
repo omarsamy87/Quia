@@ -18,4 +18,16 @@ currentpositionPage =endexPosition;
 
 
   }
+  void onTapNexte(){
+    if(currentpositionPage==2){
+      currentpositionPage=0;
+    }else
+    currentpositionPage++;
+  inputData.add(currentpositionPage);
+
+  }
+  void onDisPose(){
+    inputData.close();
+    streamController.close();
+  }
 }

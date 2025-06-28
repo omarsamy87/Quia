@@ -17,30 +17,62 @@ void initState() {
   super.initState();
   _onPordingController = OnPordingController();
 }
+void dispose(){
+  _onPordingController.onDisPose();
+  super.dispose();
+
+}
 
   @override
   Widget build(BuildContext context) {
-   var currentpositionPage = _onPordingController.currentpositionPage;
+  //  var currentpositionPage = _onPordingController.currentpositionPage;
     return Scaffold(
       
    
-      body:  Column(
-
-mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          
-          Image(image: AssetImage("assets/images/Frame.png"))
-        ],
-      ),  
-         bottomNavigationBar: CoustomBottomNveBarOnPordingPag(
+      bottomNavigationBar: CoustomBottomNveBarOnPordingPag(
+          onTapNexte: (){
+            _onPordingController.onTapNexte();
+          },
+         
           outputDataIndicator: _onPordingController.ouputData,
-          ontap:( index ){
+          ontapDotIndicator:( index ){
             _onPordingController.ontapDotIndicaton(index);
           },
         
-        currentpositionPage: _onPordingController.currentpositionPage.toDouble(),
+        // currentpositionPage: _onPordingController.currentpositionPage.toDouble(),
         dotsCount:3,
       ),
+    body:  SafeArea(
+      child: PageView.builder(
+          itemCount: 3,
+      itemBuilder: (context,index)=>
+      Container(
+        color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 28),
+          child: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                    Image(image: 
+                    AssetImage(      
+              "D:/auizapplaren/assets/images/Frame.png",
+                    ),
+                    height: 400,),SizedBox(height: 80,),
+                    Text("Synonyms for QUIZ",style: TextStyle(fontSize: 25,fontWeight: FontWeight.w600),),SizedBox(height: 24,),
+                     Text("Synonyms for QUIZ"),
+                   
+                    ],
+              ),
+            ),
+          ),
+        ),
+      ),
+        ),
+    ),  
+       
     );
   }
 }
