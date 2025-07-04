@@ -19,45 +19,49 @@ final Stream outputDataIndicator;
   final GestureTapCallback? onTapNexte;
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
-      
-        padding: 
-        const EdgeInsets.only(left: 32,right: 32,bottom: 40),
-        child: Row(
-          
-            // crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(TextValiu.kskip,style: TextStyle(fontSize: fontSize.f15),),
-    //       StreamBuilder(
-    //         stream: outputDataIndicator, 
-    //         builder: (context,Snapshot)=> 
-    //        Text("data;"),
-    // //           DotsIndicator(
-        
-    // //       decorator: DotsDecorator(
-    // //         activeSize: Size(12, 12),
-    // //         size:Size(12, 12) ,
-    // //         color:Color(0xff979797),
-    // //       activeColor: Color(0xff473F97)
-    // //       ),
-    // //       onTap: (position) {
-    // //         ontapDotIndicator(position);
-    // //       },
-          
-    // //   dotsCount: dotsCount,
-    // //   position:Snapshot.data == null? 0 :Snapshot.data!,
-    // // ),
-    // ),
-     
-          
-        InkWell  (
-          onTap: onTapNexte,
-          child: Text(TextValiu.kNext,style: TextStyle(fontWeight: FontWeight.w600,fontSize: fontSize.f15),)),
-        ],
-        
+ @override
+Widget build(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.only(left: 32, right: 32, bottom: 40),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          TextValiu.kskip,
+          style: TextStyle(fontSize: fontSize.f15),
         ),
-      );
-  }
-}
+        
+        StreamBuilder(
+          stream: outputDataIndicator,
+          builder: (context, Snapshot) => DotsIndicator(
+            decorator: DotsDecorator(
+              activeSize: Size(12, 12),
+              size: Size(12, 12),
+              color: Color(0xff979797),
+              activeColor: Color(0xff473F97),
+            ),
+            onTap: (position) {
+              ontapDotIndicator(position);
+            },
+            dotsCount: dotsCount,
+            position: Snapshot.data == null
+                ? 0.0
+                : Snapshot.data!.toDouble(),
+          ),
+        ),
+
+        InkWell(
+          onTap: onTapNexte,
+          child: Text(
+            TextValiu.kNext,
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: fontSize.f15,
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+
+}}
