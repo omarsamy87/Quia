@@ -1,44 +1,45 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
+//    صفحةالانتقالات 
 class OnPordingController {
-  int currentpositionPage = 0;
-  late StreamController<int> streamController;
-  late Sink<int> inputData;
-  late Stream<int> ouputData;
-  PageController pageController = PageController();
+  int  currentpositionPage=0;
+late StreamController<int> streamController;
+late Sink <int>inputData;
+late Stream <int>ouputData;
+late PageController onBoardingViweConyrolr;
 
-  OnPordingController() {
-    streamController = StreamController<int>.broadcast();
-    inputData = streamController.sink;
-    ouputData = streamController.stream;
-    inputData.add(currentpositionPage);
+OnPordingController(){
+  streamController=StreamController();
+  inputData = streamController.sink;
+  ouputData = streamController.stream;
+  inputData.add(currentpositionPage);
+  onBoardingViweConyrolr = PageController(initialPage: currentpositionPage);
+}
+// الانتقل بتاع النقط اللي تحت 
+  void ontapDotIndicaton(int endexPosition){
+currentpositionPage =endexPosition;
+  inputData.add(currentpositionPage);
+  // السطر اللي تحت ده بيخلي لما تضغط علي النقط ينتقل للصفحه اللي بعدها ويعمل شوية انميشن 
+   onBoardingViweConyrolr.animateToPage(currentpositionPage, duration: Duration(microseconds:400), curve: Curves.bounceInOut);
+
+
   }
-
-  void onTapNexte() {
-    if (currentpositionPage < 2) {
-      currentpositionPage++;
-      pageController.animateToPage(
-        currentpositionPage,
-        duration: Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
-      inputData.add(currentpositionPage);
+  void onTapNexte(){
+    if(currentpositionPage==2){
+      currentpositionPage=0;
+    }else{
+       currentpositionPage++;
     }
-  }
+   onBoardingViweConyrolr.animateToPage(currentpositionPage, duration: Duration(microseconds:400), curve: Curves.bounceInOut);
+  inputData.add(currentpositionPage);
 
-  void ontapDotIndicaton(int index) {
-    currentpositionPage = index;
-    pageController.animateToPage(
-      index,
-      duration: Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
-    );
-    inputData.add(currentpositionPage);
   }
-
-  void onDisPose() {
+  // ده بيقفل الانتقالات 
+  void onDisPose(){
+    inputData.close();
     streamController.close();
-    pageController.dispose();
+    onBoardingViweConyrolr.dispose();
+
   }
 }

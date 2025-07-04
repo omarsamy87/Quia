@@ -1,3 +1,7 @@
+
+
+
+// دي صافحة اللي بتعمل مودلز بتخليك تستخدمها في الليست علشان لو حابب تعرض حجات كتير وداتا في البرنامج
 class OnBoardingScreenModels {
   String? _onBoardingImge; 
   String? _onBordingTitle;
