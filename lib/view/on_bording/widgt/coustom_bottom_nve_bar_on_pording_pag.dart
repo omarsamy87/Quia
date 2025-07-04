@@ -11,11 +11,13 @@ class CoustomBottomNveBarOnPordingPag extends StatelessWidget {
       // required this.currentpositionPage,
        required this.ontapDotIndicator, 
        required this.outputDataIndicator, 
-       this.onTapNexte});
+       this.onTapNexte, required this.outputDataTextStart});
 final int dotsCount;
 // final double currentpositionPage;
 final void  Function( int index) ontapDotIndicator;
 final Stream outputDataIndicator;
+final Stream outputDataTextStart;
+
   final GestureTapCallback? onTapNexte;
 
   @override
@@ -52,11 +54,14 @@ Widget build(BuildContext context) {
 
         InkWell(
           onTap: onTapNexte,
-          child: Text(
-            TextValiu.kNext,
-            style: TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: fontSize.f15,
+          child: StreamBuilder(
+            stream:outputDataTextStart ,
+            builder:(context,snapsoht)=> Text(
+             snapsoht.data==null? TextValiu.kNext:snapsoht.data==dotsCount-1?"start":TextValiu.kNext,
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: fontSize.f15,
+              ),
             ),
           ),
         ),

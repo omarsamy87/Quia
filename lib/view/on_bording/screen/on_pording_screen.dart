@@ -44,20 +44,21 @@ Widget build(BuildContext context) {
               ),
               onPageChanged: (index) {
                 _onPordingController.currentpositionPage = index;
-                _onPordingController.inputData.add(index);
+                _onPordingController.inputDataDotIndicator.add(index);
               },
             ),
           ),
 
           CoustomBottomNveBarOnPordingPag(
+            outputDataTextStart: _onPordingController.ouputDataStartText,
             onTapNexte: () {
               _onPordingController.onTapNexte();
             },
-            outputDataIndicator: _onPordingController.ouputData,
+            outputDataIndicator: _onPordingController.ouputDataDotIndicator,
             ontapDotIndicator: (index) {
               _onPordingController.ontapDotIndicaton(index);
             },
-            dotsCount: 3,
+            dotsCount:  ConstValus.onBordigListConst.length,
           ),
         ],
       ),

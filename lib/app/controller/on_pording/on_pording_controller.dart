@@ -4,22 +4,38 @@ import 'package:flutter/cupertino.dart';
 //    صفحةالانتقالات 
 class OnPordingController {
   int  currentpositionPage=0;
-late StreamController<int> streamController;
-late Sink <int>inputData;
-late Stream <int>ouputData;
+late StreamController<int> streamControlleraDotIndicator;
+late StreamController<int> streamControlleraStartText;
+
+late Sink <int>inputDataDotIndicator;
+late Stream <int>ouputDataDotIndicator;
+
+late Sink <int>inputDataStartText;
+late Stream <int>ouputDataStartText;
+
 late PageController onBoardingViweConyrolr;
 
+
+
 OnPordingController(){
-  streamController=StreamController();
-  inputData = streamController.sink;
-  ouputData = streamController.stream;
-  inputData.add(currentpositionPage);
+  streamControlleraDotIndicator=StreamController();
+  streamControlleraStartText=StreamController();
+
+  inputDataDotIndicator = streamControlleraDotIndicator.sink;
+  ouputDataDotIndicator = streamControlleraDotIndicator.stream;
+
+  inputDataStartText = streamControlleraStartText.sink;
+  ouputDataStartText = streamControlleraStartText.stream;
+
+  inputDataDotIndicator.add(currentpositionPage);
+  inputDataStartText.add(currentpositionPage);
+
   onBoardingViweConyrolr = PageController(initialPage: currentpositionPage);
 }
 // الانتقل بتاع النقط اللي تحت 
   void ontapDotIndicaton(int endexPosition){
 currentpositionPage =endexPosition;
-  inputData.add(currentpositionPage);
+  inputDataDotIndicator.add(currentpositionPage);
   // السطر اللي تحت ده بيخلي لما تضغط علي النقط ينتقل للصفحه اللي بعدها ويعمل شوية انميشن 
    onBoardingViweConyrolr.animateToPage(currentpositionPage, duration: Duration(microseconds:400), curve: Curves.bounceInOut);
 
@@ -32,13 +48,17 @@ currentpositionPage =endexPosition;
        currentpositionPage++;
     }
    onBoardingViweConyrolr.animateToPage(currentpositionPage, duration: Duration(microseconds:400), curve: Curves.bounceInOut);
-  inputData.add(currentpositionPage);
+  inputDataDotIndicator.add(currentpositionPage);
+  inputDataStartText.add(currentpositionPage);
+
 
   }
   // ده بيقفل الانتقالات 
   void onDisPose(){
-    inputData.close();
-    streamController.close();
+    inputDataDotIndicator.close();
+    streamControlleraDotIndicator.close();
+     inputDataStartText.close();
+    streamControlleraStartText.close();
     onBoardingViweConyrolr.dispose();
 
   }
