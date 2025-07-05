@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:auizapplaren/core/resources/ruotes_maneger.dart';
 import 'package:flutter/cupertino.dart';
 //    صفحةالانتقالات 
 class OnPordingController {
@@ -41,9 +42,9 @@ currentpositionPage =endexPosition;
 
 
   }
-  void onTapNexte(){
+  void onTapNexte( BuildContext context){
     if(currentpositionPage==2){
-      currentpositionPage=0;
+     gotoLoginPage(context);
     }else{
        currentpositionPage++;
     }
@@ -52,6 +53,9 @@ currentpositionPage =endexPosition;
   inputDataStartText.add(currentpositionPage);
 
 
+  }
+  void gotoLoginPage( BuildContext context ){
+   Navigator.pushNamedAndRemoveUntil(context, RuotesName.kLoginScreen, (route)=>false) ;
   }
   // ده بيقفل الانتقالات 
   void onDisPose(){

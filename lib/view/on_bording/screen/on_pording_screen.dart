@@ -50,9 +50,12 @@ Widget build(BuildContext context) {
           ),
 
           CoustomBottomNveBarOnPordingPag(
+            onskip: (){
+              _onPordingController.gotoLoginPage(context);
+            },
             outputDataTextStart: _onPordingController.ouputDataStartText,
             onTapNexte: () {
-              _onPordingController.onTapNexte();
+              _onPordingController.onTapNexte(context);
             },
             outputDataIndicator: _onPordingController.ouputDataDotIndicator,
             ontapDotIndicator: (index) {
