@@ -1,16 +1,27 @@
 
+import 'package:auizapplaren/app/controller/login/login_Scren_Controlr.dart';
 import 'package:auizapplaren/core/resources/asseta_maneger.dart';
-import 'package:auizapplaren/view/login_screen/widget/CoustomTextFildNamedlogiScren.dart';
+import 'package:auizapplaren/view/login_screen/widget/CoustomtextformFildLoginScrns.dart';
+import 'package:auizapplaren/core/widgets/CustomBotomStarloginScren.dart';
 import 'package:auizapplaren/view/login_screen/widget/CustomTexstEnteryourname.dart';
 import 'package:auizapplaren/view/login_screen/widget/CustomlogoLoginScreen.dart';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  late LoginScrenControlr _LoginScrenControlr;
+  void initState(){
+    super.initState();
+    _LoginScrenControlr =LoginScrenControlr();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,17 +35,58 @@ class LoginScreen extends StatelessWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
-          child: Column(
-            children: [
-               Customlogologinscreen(),
-             Customtexstenteryourname(),
-              SizedBox(height: 10,),
-         Coustomtextfildnamedlogiscren(
-          onChanged: (value){},
-         ),
-           
-          
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+            Customlogologinscreen(),
+                    SizedBox(height: 50,),
+            Customtexstenteryourname(),
+                SizedBox(height: 10,),
+                     CoustomtextformFildLoginScrns(
+            validator: (value) {
+            return _LoginScrenControlr.validateName(value);
+            },
+            keyForme: _LoginScrenControlr.formKeyName,
+            onChanged: (value){
+              _LoginScrenControlr.name=value;
+              if(_LoginScrenControlr.formKeyName.currentState!.validate()){
+                print("object");
+              }
+            },
+                     ),
+                    //   Form(
+                    //   key: _LoginScrenControlr.formKeyName,
+                    //    child: TextFormField( 
+                    //     validator: (value) {
+                    //       if(value!.isEmpty){
+                    //         return "Hllo";
+                    //       }
+                    //     },
+                    //     onChanged: (value){
+                    //       if(_LoginScrenControlr.formKeyName.currentState!.validate()){
+                    //         print("object");
+                    //       }
+                    //     },
+                    //         cursorColor: ColorManege.kPraimreColor,
+                    //            decoration:InputDecoration(
+                    
+                    //             border: OutlineInputBorder(
+                    //               borderRadius: BorderRadius.all(Radius.circular(20))
+                        
+                    //             ),
+                      
+                    
+                    //            ) ,),
+                    //  ),
+             SizedBox(height: 200,),
+             Custombotomstarloginscren(
+              onPressed: () {
+                
+              },
+             ),
+                   ],
+            ),
           ),
         ),
       ),

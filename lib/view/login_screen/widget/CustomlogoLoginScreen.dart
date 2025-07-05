@@ -1,4 +1,5 @@
 import 'package:auizapplaren/core/resources/String.dart';
+import 'package:auizapplaren/core/resources/color_maneger.dart';
 
 
 import 'package:flutter/cupertino.dart';
@@ -13,7 +14,7 @@ class Customlogologinscreen extends StatelessWidget {
     return 
          Text(TextValiu.kTextLogo,
              style: GoogleFonts.montserrat(
-              color:const Color.fromARGB(255, 24, 2, 2) ,fontSize: 150
+              color:ColorManege.kPraimreColor ,fontSize: 150
             ), 
                
             
