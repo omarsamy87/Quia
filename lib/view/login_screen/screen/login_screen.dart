@@ -1,11 +1,9 @@
-
 import 'package:auizapplaren/app/controller/login/login_Scren_Controlr.dart';
 import 'package:auizapplaren/core/resources/asseta_maneger.dart';
 import 'package:auizapplaren/view/login_screen/widget/CoustomtextformFildLoginScrns.dart';
 import 'package:auizapplaren/core/widgets/CustomBotomStarloginScren.dart';
 import 'package:auizapplaren/view/login_screen/widget/CustomTexstEnteryourname.dart';
 import 'package:auizapplaren/view/login_screen/widget/CustomlogoLoginScreen.dart';
-
 import 'package:flutter/material.dart';
 
 
@@ -49,12 +47,13 @@ class _LoginScreenState extends State<LoginScreen> {
             Customtexstenteryourname(),
                 SizedBox(height: 10,),
                      CoustomtextformFildLoginScrns(
+                      controllerName: _LoginScrenControlr.controllerNamedTixtFiled,
             validator: (value) {
             return _LoginScrenControlr.validateName(value);
             },
             keyForme: _LoginScrenControlr.formKeyName,
             onChanged: (value){
-              // _LoginScrenControlr.name=value;\
+       
               _LoginScrenControlr.onChaingedTextFormFiled();
             
             },

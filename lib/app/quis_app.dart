@@ -12,7 +12,7 @@ class QuisApp extends StatelessWidget {
     return MaterialApp(
      routes:RuotesManeger.routes ,
       debugShowCheckedModeBanner: false,
-     initialRoute: RuotesName.kSplashScreens,
+     initialRoute: RuotesName.kQuizscren,
     );
   }
 }

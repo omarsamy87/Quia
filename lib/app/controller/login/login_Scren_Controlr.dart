@@ -4,12 +4,13 @@ import 'package:auizapplaren/core/resources/ruotes_maneger.dart';
 import 'package:flutter/cupertino.dart';
 
 class LoginScrenControlr {
-  String name="";
+
   late GlobalKey<FormState> formKeyName;
   bool buttonIsActive=false;
 late StreamController<bool> streamControllerBotomStatys;
 late Sink<bool>inputDataButtStream;
   late Stream<bool> isActivoutOtputStrem;
+  late TextEditingController controllerNamedTixtFiled;
 
   LoginScrenControlr(){
     formKeyName=GlobalKey();
@@ -17,6 +18,7 @@ streamControllerBotomStatys=StreamController();
 inputDataButtStream =streamControllerBotomStatys.sink;
 isActivoutOtputStrem=streamControllerBotomStatys.stream;
  inputDataButtStream.add(buttonIsActive);
+ controllerNamedTixtFiled =TextEditingController();
 
 
   }
@@ -41,7 +43,10 @@ isActivoutOtputStrem=streamControllerBotomStatys.stream;
     inputDataButtStream.close();
     streamControllerBotomStatys.close();
   }
-  void navigatekQuizscren(BuildContext context){
-    Navigator.pushNamedAndRemoveUntil(context, RuotesName.kQuizscren, (Route route)=>false);
+  void navigatekQuizscren(BuildContext context , ){
+    
+    Navigator.pushNamedAndRemoveUntil(
+      arguments: controllerNamedTixtFiled.text,
+      context, RuotesName.kQuizscren, (Route route)=>false);
   }
 }
