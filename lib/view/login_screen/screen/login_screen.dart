@@ -22,6 +22,11 @@ class _LoginScreenState extends State<LoginScreen> {
     super.initState();
     _LoginScrenControlr =LoginScrenControlr();
   }
+  void dispose(){
+    super.dispose();
+    _LoginScrenControlr=LoginScrenControlr();
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,40 +54,17 @@ class _LoginScreenState extends State<LoginScreen> {
             },
             keyForme: _LoginScrenControlr.formKeyName,
             onChanged: (value){
-              _LoginScrenControlr.name=value;
-              if(_LoginScrenControlr.formKeyName.currentState!.validate()){
-                print("object");
-              }
+              // _LoginScrenControlr.name=value;\
+              _LoginScrenControlr.onChaingedTextFormFiled();
+            
             },
                      ),
-                    //   Form(
-                    //   key: _LoginScrenControlr.formKeyName,
-                    //    child: TextFormField( 
-                    //     validator: (value) {
-                    //       if(value!.isEmpty){
-                    //         return "Hllo";
-                    //       }
-                    //     },
-                    //     onChanged: (value){
-                    //       if(_LoginScrenControlr.formKeyName.currentState!.validate()){
-                    //         print("object");
-                    //       }
-                    //     },
-                    //         cursorColor: ColorManege.kPraimreColor,
-                    //            decoration:InputDecoration(
-                    
-                    //             border: OutlineInputBorder(
-                    //               borderRadius: BorderRadius.all(Radius.circular(20))
-                        
-                    //             ),
-                      
-                    
-                    //            ) ,),
-                    //  ),
+              
              SizedBox(height: 200,),
              Custombotomstarloginscren(
+              isActtivoutBoutStream: _LoginScrenControlr.isActivoutOtputStrem,
               onPressed: () {
-                
+              _LoginScrenControlr.navigatekQuizscren(context);
               },
              ),
                    ],
