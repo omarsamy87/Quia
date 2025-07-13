@@ -16,7 +16,7 @@ class Quizscren extends StatefulWidget {
   State<Quizscren> createState() => _QuizscrenState();
 }
 
-class _QuizscrenState extends State<Quizscren> {
+class _QuizscrenState extends State<Quizscren> with SingleTickerProviderStateMixin{
   late QuizScreenControllr _quizScreenControllr;
   @override
   void dispose() {
@@ -27,11 +27,14 @@ class _QuizscrenState extends State<Quizscren> {
   void initState() {
     // TODO: implement initState
     super.initState();
-_quizScreenControllr =QuizScreenControllr();
+_quizScreenControllr =QuizScreenControllr(this ,context);
+_quizScreenControllr.forwerdAneimation();
+_quizScreenControllr.restartAnmaition();
   }
   @override
   Widget build(BuildContext context) {
-  //  String a = ModalRoute.of(context)!.settings.arguments as String;
+    String name = ModalRoute.of(context)!.settings.arguments as String;
+    _quizScreenControllr.addName(name);
   //  print(a);
     return Scaffold(
       backgroundColor: Color(0xffEff0F3),
@@ -39,7 +42,8 @@ _quizScreenControllr =QuizScreenControllr();
   onTap: () {
      Navigator.of(context).canPop();
   },
-  text: "${_quizScreenControllr.questionNow+1}/${_quizScreenControllr.countQuistion}",
+  
+   TxtQuisnStream:_quizScreenControllr.aoutputeQuestionsNow ,
  ),
  
  body: Padding(
@@ -61,7 +65,12 @@ _quizScreenControllr =QuizScreenControllr();
                 left: 0,
                 top: -29,
                 
-                child: CustomCirculParcetInCatorQuizScreen( outpoutstreamTime:_quizScreenControllr.aoutputeDatatime, outAnimationStatus: _quizScreenControllr.outAnimationStatus ,)),
+              child: CustomCirculParcetInCatorQuizScreen(
+  outpoutstreamTime: _quizScreenControllr.aoutputeDatatime,
+ outAnimationProgress: _quizScreenControllr.isActivoutOtputStrem,
+
+),
+),
        
            ],
           )
@@ -84,7 +93,8 @@ _quizScreenControllr =QuizScreenControllr();
  bottomNavigationBar: Padding(
    padding: const EdgeInsets.only(right: 20 , left: 20,bottom: 40),
    child: Custombotomstarloginscren(onPressed: (){
-
+    
+_quizScreenControllr.nextQuestion();
    },
     isActtivoutBoutStream: _quizScreenControllr.isActivoutOtputStrem),
  ), 

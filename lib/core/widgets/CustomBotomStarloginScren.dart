@@ -31,7 +31,7 @@ class Custombotomstarloginscren extends StatelessWidget {
                 
                 borderRadius: BorderRadius.all(Radius.circular(20)),
             ),
-            child: Text("cvbnm,." ,style: TextStyle(
+            child: Text("Next" ,style: TextStyle(
               fontSize: 24,
               color: ColorManege.kwhite),)),
           

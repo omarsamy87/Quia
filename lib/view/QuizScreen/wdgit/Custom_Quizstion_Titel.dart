@@ -12,7 +12,8 @@ final Stream< int> outPutStremQuestionTitele;
   Widget build(BuildContext context) {
     return  StreamBuilder(
       stream: outPutStremQuestionTitele,
-       builder: (context,snapshot)=>   Container(
+       builder: (context,snapshot)=>  
+        Container(
               alignment: Alignment.center,
               padding: EdgeInsets.all(25),
               child: Text(  

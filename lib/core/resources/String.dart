@@ -5,6 +5,9 @@ class TextValiu{
   static const String kskip="skip";
   static const String SynonymsforQUIZ="Synonyms for QUIZ";
   static const String Enteryourname ="Enter your name";
+  static const String kname ="name";
+  static const String klistCorrectAnswer ="listCorrectAnswer";
+
 
 
 }

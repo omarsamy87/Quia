@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 class Customappbarquizscren extends StatelessWidget implements PreferredSizeWidget {
   const Customappbarquizscren({super.key,
    required this.onTap, 
-   required this.text
+  //  required this.text, 
+   required this.TxtQuisnStream
    });
   final GestureTapCallback onTap;
-  final String text;
+  // final String text;
+final  Stream <String>TxtQuisnStream;
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +30,13 @@ leading: InkWell(
     ),
   ),
 ),
-title: Text("${text}",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
-     centerTitle: true,
+centerTitle: true,
+title:StreamBuilder(
+  
+  stream: TxtQuisnStream, 
+  
+builder: (context,snapshot)=> Text(snapshot.data==null?"":snapshot.data!,style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),)
+     
 
     )
    ;
