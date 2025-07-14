@@ -51,7 +51,7 @@ String _name ="";
     _context=context;
     animationController = AnimationController(
       vsync: vsync,
-      duration: Duration(seconds: 1),
+      duration: Duration(seconds: 5),
     );
 
     countQuistion = ConstValus.questionList.length;
@@ -153,7 +153,7 @@ void addName(String name){
      // AnimationStatus=false;
       intAnimationProgress.add(animationprogresprcent);
       for(int i in listCorrectAnswer){
-       print(i) ;
+      
       }
       goToAnseerScreens();
 
